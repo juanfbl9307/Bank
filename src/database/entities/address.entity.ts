@@ -11,22 +11,22 @@ import { Country } from './country.entity';
 export class Address {
   @PrimaryGeneratedColumn('increment')
   id: number;
-  @Column({ type: 'varchar' })
+  @Column()
   neighborhood: string;
-  @Column({ type: 'varchar' })
+  @Column()
   address_line1: string;
-  @Column({ type: 'varchar' })
+  @Column()
   address_line2: string;
-  @Column({ type: 'varchar' })
+  @Column()
   city: string;
-  @Column({ type: 'bigint' })
-  postal_code: number;
-  @Column({ type: 'int8' })
-  country_id: number;
-  @Column({ type: 'bigint' })
-  telephone: number;
-  @Column({ type: 'bigint' })
-  mobile: number;
+  @Column()
+  postal_code: string;
+  @Column()
+  countryId: number;
+  @Column()
+  telephone: string;
+  @Column()
+  mobile: string;
   @ManyToOne(() => Country, (country) => country.id)
   country: Country;
 }

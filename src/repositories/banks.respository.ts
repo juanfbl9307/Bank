@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 export class BanksRepository {
   constructor(@InjectRepository(Bank) private bankModel: Repository<Bank>) {}
   async getBanks(): Promise<Bank[]> {
-    return await this.bankModel.find({relations:['status']});
+    return await this.bankModel.find({relations:['status','address']});
   }
   async createBank(params): Promise<Bank[]> {
     const bank = this.bankModel.create(params);

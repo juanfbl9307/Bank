@@ -3,20 +3,17 @@ import { BanksController } from './banks.controller';
 import { BankService } from './services/bank.service';
 import { DatabaseModule } from './database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { BanksRepository } from './repositories/bank.respository';
-import { BankStatusService } from './services/bank_status.service';
-import { BankStatusRep } from './repositories/bank_status.repository';
-
+import { BanksRepository } from './repositories/banks.respository';
+import { StatusService } from './services/status.service';
+import { StatusesRepository } from './repositories/statuses.repository';
 import { AddressService } from './services/address.service';
 import { CountryService } from './services/country.service';
 import { Transaction } from './database/entities/transaction.entity';
 import { Bank } from './database/entities/bank.entity';
-import { BankStatus } from './database/entities/bank_status.entity';
+import { Status } from './database/entities/status.entity';
 import { Address } from './database/entities/address.entity';
 import { Country } from './database/entities/country.entity';
-import { TransactionStatus } from './database/entities/transaction_status.entity';
-import { BankBalance } from './database/entities/bank_balance.entity';
+import { BankBalance } from './database/entities/bankBalance.entity';
 
 @Module({
   imports: [
@@ -24,10 +21,9 @@ import { BankBalance } from './database/entities/bank_balance.entity';
     TypeOrmModule.forFeature([
       Bank,
       Transaction,
-      BankStatus,
+      Status,
       Address,
       Country,
-      TransactionStatus,
       BankBalance,
     ]),
   ],
@@ -35,8 +31,8 @@ import { BankBalance } from './database/entities/bank_balance.entity';
   providers: [
     BankService,
     BanksRepository,
-    BankStatusService,
-    BankStatusRep,
+    StatusService,
+    StatusesRepository,
     AddressService,
     CountryService,
   ],

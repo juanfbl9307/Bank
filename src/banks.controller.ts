@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BankService } from './services/bank.service';
-import { BankStatusService } from './services/bank_status.service';
+import { StatusService } from './services/status.service';
 import { AddressService } from './services/address.service';
 import { CountryService } from './services/country.service';
 
@@ -8,7 +8,7 @@ import { CountryService } from './services/country.service';
 export class BanksController {
   constructor(
     private readonly bankService: BankService,
-    private readonly bankStatusService: BankStatusService,
+    private readonly statusService: StatusService,
     private readonly addressService: AddressService,
     private readonly countryService: CountryService,
   ) {}
@@ -18,9 +18,9 @@ export class BanksController {
     return this.bankService.getBanks();
   }
 
-  @Get('bankstatuses')
-  getBankStatues() {
-    return this.bankStatusService.getBankStatues();
+  @Get('statuses')
+  getStatus() {
+    return this.statusService.getStatuses();
   }
 
   @Get('address')
@@ -37,9 +37,9 @@ export class BanksController {
     return this.bankService.createBank({ ...params });
   }
 
-  @Post('bankstatuses')
-  createBankStatus(@Body() params) {
-    return this.bankStatusService.createBankStatus({ ...params });
+  @Post('statuses')
+  createStatus(@Body() params) {
+    return this.statusService.createStatus({ ...params });
   }
 
   @Post('address')

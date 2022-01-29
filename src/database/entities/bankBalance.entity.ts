@@ -12,13 +12,12 @@ import { Bank } from './bank.entity';
 export class BankBalance {
   @PrimaryGeneratedColumn('increment')
   id: number;
-  @Column({ type: 'int' })
+  @Column()
   user_id: number;
-  @Column({ type: 'int' })
+  @Column()
   balance: number;
-  @Column({ type: 'int' })
+  @Column()
   bank_id: number;
   @ManyToMany(() => Bank)
-  @JoinTable()
   banks: Bank[];
 }

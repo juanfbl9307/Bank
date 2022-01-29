@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Bank } from '../database/entities/bank.entity';
-import { BanksRepository } from '../repositories/bank.respository';
+import { BanksRepository } from '../repositories/banks.respository';
 
 @Injectable()
 export class BankService {

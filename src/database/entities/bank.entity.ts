@@ -1,20 +1,20 @@
 import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
-import { BankStatus } from './bank_status.entity';
+import { Status } from './status.entity';
 import { Address } from './address.entity';
 
 @Entity()
 export class Bank {
   @PrimaryGeneratedColumn('increment')
   id: number;
-  @Column({ type: 'varchar' })
+  @Column()
   name: string;
-  @Column({ type: 'int' })
-  status_code: number;
-  @Column({ type: 'int8' })
-  address_id: number;
+  @Column()
+  statusId: number;
+  @Column()
+  addressId: number;
 
-  @ManyToOne(() => BankStatus, bankStatus => bankStatus.banks)
-  status: BankStatus;
+  @ManyToOne(() => Status, (status) => status.id)
+  status: Status;
 
   @ManyToOne(() => Address, (address) => address.id)
   address: Address;
