@@ -1,0 +1,20 @@
+//CREATE THE DATABASE MODELS
+knowing the objective of the app, build the schemas, tables and relations
+
+//DOCKER IMAGES POSTGRES FOR DB
+docker run --name some-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=postgres -e POSTGRES_DB=bank -p 5432:5432 -d postgres
+
+//INIT PRISMA TOOL
+npx prisma init
+//DATABASE MIGRATION AND CREATION
+npx prisma migrate dev --name bank_database
+//FORMATTING PRISMA SCHEMA
+npx prisma format
+
+//VALIDATION TECHNIQUE
+With validation we can create filters and pipes to the data coming from the request
+Transform the types and restrictions to other kind of types and parameters
+
+
+
+

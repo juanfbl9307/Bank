@@ -4,8 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Country {
   @PrimaryGeneratedColumn('increment')
   id: number;
-  @Column({ type: 'varchar' })
+  @Column()
   name: string;
-  @Column({ type: 'varchar' })
+  @Column()
   continent_name: string;
 }

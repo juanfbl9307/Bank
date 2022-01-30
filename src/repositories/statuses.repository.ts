@@ -9,7 +9,7 @@ export class StatusesRepository {
     @InjectRepository(Status) private statusModel: Repository<Status>,
   ) {}
   async getStatuses(): Promise<Status[]> {
-    return await this.statusModel.find();
+    return await this.statusModel.find({ relations: ['banks'] });
   }
   async createStatus(params): Promise<Status[]> {
     const status = this.statusModel.create(params);

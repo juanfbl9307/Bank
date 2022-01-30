@@ -1,6 +1,12 @@
-import {Entity, Column, PrimaryGeneratedColumn, OneToMany, PrimaryColumn} from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import { Bank } from './bank.entity';
-import {Transaction} from "./transaction.entity";
+import { Transaction } from './transaction.entity';
 
 @Entity()
 export class Status {
@@ -10,8 +16,8 @@ export class Status {
   description: string;
   @Column()
   code: number;
-  @OneToMany(() => Bank, bank => bank.id)
+  @OneToMany(() => Bank, (bank) => bank.status)
   banks: Bank[];
-  @OneToMany(() => Transaction, transaction => transaction.id)
+  @OneToMany(() => Transaction, (transaction) => transaction.id)
   transactions: Transaction[];
 }

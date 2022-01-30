@@ -1,6 +1,15 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Status } from './status.entity';
 import { Address } from './address.entity';
+import { Transaction } from './transaction.entity';
 
 @Entity()
 export class Bank {
@@ -12,10 +21,10 @@ export class Bank {
   statusId: number;
   @Column()
   addressId: number;
-
-  @ManyToOne(() => Status, (status) => status.id)
+  @ManyToOne(() => Status, (status) => status.banks)
   status: Status;
-
   @ManyToOne(() => Address, (address) => address.id)
   address: Address;
+  @OneToMany(() => Transaction, (transaction) => transaction.bankId)
+  transactions: Transaction[];
 }

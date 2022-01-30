@@ -13,10 +13,13 @@ import { Bank } from './database/entities/bank.entity';
 import { Status } from './database/entities/status.entity';
 import { Address } from './database/entities/address.entity';
 import { Country } from './database/entities/country.entity';
-import { BankBalance } from './database/entities/bankBalance.entity';
+import { ConfigModule } from '@nestjs/config';
+import { TransactionService } from './services/transaction.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+
     DatabaseModule,
     TypeOrmModule.forFeature([
       Bank,
@@ -24,7 +27,6 @@ import { BankBalance } from './database/entities/bankBalance.entity';
       Status,
       Address,
       Country,
-      BankBalance,
     ]),
   ],
   controllers: [BanksController],
@@ -35,6 +37,7 @@ import { BankBalance } from './database/entities/bankBalance.entity';
     StatusesRepository,
     AddressService,
     CountryService,
+    TransactionService,
   ],
 })
 export class BanksModule {}

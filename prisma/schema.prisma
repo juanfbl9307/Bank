@@ -11,52 +11,52 @@ datasource db {
 }
 
 model status {
-  id        Int      @id @default(autoincrement())
-  description    String   @db.VarChar(255)
-  code      Int      @unique
+  id           Int           @id @default(autoincrement())
+  description  String        @db.VarChar(255)
+  code         Int           @unique
   transactions transaction[]
-  banks bank[]
+  banks        bank[]
 }
 
 model country {
-  id        Int      @id @default(autoincrement())
-  name      String      @unique
-  continent_name      String
-  addresses   address[]
+  id             Int       @id @default(autoincrement())
+  name           String    @unique
+  continent_name String
+  addresses      address[]
 }
 
 model address {
-  id        Int      @id @default(autoincrement())
-  neighborhood   String
-  address_line1  String     @unique
-  address_line2  String     @unique
-  city           String
-  postal_code    String
-  country        country   @relation(fields:[countryId], references:[id])
+  id            Int     @id @default(autoincrement())
+  neighborhood  String
+  address_line1 String  @unique
+  address_line2 String  @unique
+  city          String
+  postal_code   String
+  country       country @relation(fields: [countryId], references: [id])
   countryId     Int
-  telephone      String     @unique
-  mobile         String     @unique
-  banks          bank[]
+  telephone     String  @unique
+  mobile        String  @unique
+  banks         bank[]
 }
 
 model bank {
-  id        Int      @id @default(autoincrement())
-  name      String      @unique
-  status    status  @relation(fields:[statusId], references:[id])
-  statusId   Int
-  address   address     @relation(fields:[addressId], references:[id])
-  addressId    Int     @unique
-  transactions   transaction[]
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  status       status        @relation(fields: [statusId], references: [id])
+  statusId     Int
+  address      address       @relation(fields: [addressId], references: [id])
+  addressId    Int           @unique
+  transactions transaction[]
 }
 
 model transaction {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  status    status   @relation(fields: [statusId], references: [id])
-  statusId        Int
-  amount_added       Decimal   @db.Money
-  amount_subtracted  Decimal   @db.Money
-  bank               bank      @relation(fields:[bankId], references: [id])
-  bankId   Int
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  createdAt         DateTime @default(now())
+  status            status   @relation(fields: [statusId], references: [id])
+  statusId          Int
+  amount_added      Decimal
+  amount_subtracted Decimal
+  bank              bank     @relation(fields: [bankId], references: [id])
+  bankId            Int
 }
