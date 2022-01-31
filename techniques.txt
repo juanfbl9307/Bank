@@ -15,6 +15,9 @@ npx prisma format
 With validation we can create filters and pipes to the data coming from the request
 Transform the types and restrictions to other kind of types and parameters
 
+//TRANSACTION TECHNIQUE
+Transaction with Connection from ORM is for multiple database operations to be done
+
 
 
 

@@ -21,13 +21,7 @@ import { TransactionService } from './services/transaction.service';
     ConfigModule.forRoot({ isGlobal: true }),
 
     DatabaseModule,
-    TypeOrmModule.forFeature([
-      Bank,
-      Transaction,
-      Status,
-      Address,
-      Country,
-    ]),
+    TypeOrmModule.forFeature([Bank, Transaction, Status, Address, Country]),
   ],
   controllers: [BanksController],
   providers: [

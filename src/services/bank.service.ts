@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Bank } from '../database/entities/bank.entity';
 import { BanksRepository } from '../repositories/banks.respository';
 

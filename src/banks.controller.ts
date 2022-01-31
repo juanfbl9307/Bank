@@ -48,7 +48,7 @@ export class BanksController {
 
   @Get('transaction')
   getTransactions() {
-    return this.transactionService.getTransactions();
+    return this.transactionService.getListAll();
   }
 
   @Get('balance/user')
@@ -79,5 +79,14 @@ export class BanksController {
   @Post('country')
   createCountry(@Body() params: CreateCountryDto) {
     return this.countryService.createCountry({ ...params });
+  }
+
+  @Post('transfer')
+  transferFound(@Body() params) {
+    return this.transactionService.transferFounds(
+      params.sender,
+      params.receptor,
+      params.amount,
+    );
   }
 }
