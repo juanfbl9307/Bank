@@ -1,9 +1,5 @@
 steps:
-  - name: 'ubuntu'
-    args: ['sleep','600']
-    timeout: 600s
-  - name: 'ubuntu'
-    args:
-      - echo hello world after 600s
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build','-t','juanfbl93/bankapp:latest','.']
 options:
   logging: CLOUD_LOGGING_ONLY
